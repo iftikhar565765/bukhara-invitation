@@ -1,0 +1,109 @@
+/* ═══════════════════════════════════════════════════════════════
+   BUKHARA · variables.css — the Samarkand design system
+   ---------------------------------------------------------------
+   Built from four materials of the silk road: turquoise glaze,
+   cobalt arabesque, saffron gold, and ivory paper. The hero is a
+   dawn sky over the Registan; the bands are lagoons of glazed
+   tile. Every colour token is overwritten at runtime by main.js
+   applyTheme(); defaults mirror the bukhara (turquoise) preset.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── the bukhara palette (Samarkand dawn) ─────────────────── */
+  --burgundy:      #0F5E6B;   /* deep teal — primary accent        */
+  --burgundy-deep: #0B4A55;   /* compressed teal                   */
+  --wine:          #072E36;   /* deep lagoon — dark accents        */
+  --crimson:       #D8ECE6;   /* pale azure — light accent on dark */
+  --champagne:     #D2A447;   /* saffron gold                      */
+  --champagne-soft:#7C6128;   /* burnished saffron                 */
+  --gold-ink:      #6F5316;   /* deep saffron — TEXT on light (4.5+) */
+  --parchment:     #F1EBD7;   /* warm silk cream                   */
+  --ivory:         #F5EFDE;   /* ivory page ground                 */
+  --paper-raised:  #FBF7EA;   /* raised card paper                 */
+  --night:         #0E3A44;   /* lagoon teal (dark bands)          */
+  --night-deep:    #08242C;   /* deep lapis lagoon                 */
+  --olive:         #3E6E62;   /* sea green                         */
+  --olive-deep:    #2E544B;
+  --sage:          #A6C2B6;   /* pale sea                          */
+  --rose:          #E7D9AC;   /* saffron cream                     */
+  --ink:           #14333A;   /* lapis ink (calligraphy black)     */
+  --ink-soft:      #4E6A6E;   /* sea umber                         */
+  --charcoal:      #93A8A6;
+
+  /* ── emerald-glow fallbacks from the old base, re-lit gold ── */
+  --emerald-glow:  var(--champagne);
+  --emerald-soft:  var(--champagne);
+  --emerald:       var(--burgundy);
+
+  /* ── derived golds ────────────────────────────────────────── */
+  --gold:          var(--champagne);
+  --gold-bright:   color-mix(in srgb, var(--champagne) 66%, #F3E3B4);
+  --gold-dim:      color-mix(in srgb, var(--champagne) 58%, var(--ink) 14%);
+  --gold-line:     color-mix(in srgb, var(--champagne) 52%, transparent);
+  --gold-faint:    color-mix(in srgb, var(--champagne) 26%, transparent);
+  --gold-ghost:    color-mix(in srgb, var(--champagne) 13%, transparent);
+
+  /* ── paper tones ──────────────────────────────────────────── */
+  --paper-line:    color-mix(in srgb, var(--champagne-soft) 50%, transparent);
+  --paper-wash:    color-mix(in srgb, var(--wine) 3%, var(--paper-raised));
+  --cream-deep:    color-mix(in srgb, var(--parchment) 62%, var(--ivory) 38%);
+
+  /* ── the silk road's own derived tones — dawn over Registan ─ */
+  --sky-1:         var(--night-deep);
+  --sky-2:         color-mix(in srgb, var(--night) 84%, var(--olive) 16%);
+  --glass:         color-mix(in srgb, var(--night) 55%, transparent);
+  --glass-deep:    color-mix(in srgb, var(--night-deep) 72%, transparent);
+  --glass-edge:    color-mix(in srgb, var(--champagne) 26%, transparent);
+  --gilding:       color-mix(in srgb, var(--champagne) 86%, white 14%);
+  --gilding-soft:  color-mix(in srgb, var(--champagne) 55%, transparent);
+  --sunset:        color-mix(in srgb, var(--parchment) 88%, var(--champagne) 12%);
+  --sunset-soft:   color-mix(in srgb, var(--parchment) 58%, transparent);
+  --night-ink:     color-mix(in srgb, var(--parchment) 66%, transparent);
+  --night-faint:   color-mix(in srgb, var(--parchment) 48%, transparent);
+  --ember:         color-mix(in srgb, var(--champagne) 40%, #F3E3B4 60%);
+
+  /* ── luxury hardware — hairlines and soft shadow layers ───── */
+  --line:          color-mix(in srgb, var(--champagne) 44%, transparent);
+  --line-strong:   color-mix(in srgb, var(--champagne-soft) 72%, transparent);
+  --shadow-soft:   0 14px 40px -18px color-mix(in srgb, var(--night-deep) 42%, transparent),
+                   0 4px 14px -8px color-mix(in srgb, var(--night-deep) 24%, transparent);
+  --shadow-lift:   0 26px 60px -26px color-mix(in srgb, var(--night-deep) 48%, transparent),
+                   0 8px 22px -12px color-mix(in srgb, var(--night-deep) 30%, transparent);
+  --shadow-card:   var(--shadow-lift);
+  --shadow-gold:   0 1px 0 rgba(255, 248, 224, .6) inset;
+  --shadow-seal:   0 4px 10px color-mix(in srgb, var(--burgundy) 28%, transparent),
+                   0 14px 30px color-mix(in srgb, var(--burgundy) 16%, transparent);
+
+  /* ── type ───────────────────────────────────────────────────
+     Italiana — the silk-road display voice · Cormorant — the
+     editorial prose · Alex Brush — the romantic hand · EB
+     Garamond — the body · Jost — labels · Amiri — the Quranic
+     voice.                                                      */
+  --font-editorial: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
+  --font-display:   'Italiana', 'Cormorant Garamond', 'Georgia', serif;
+  --font-script:    'Alex Brush', 'Segoe Script', 'Apple Chancery', cursive;
+  --font-hand:      'Caveat', 'Bradley Hand', 'Segoe Script', cursive;
+  --font-body:      'EB Garamond', 'Georgia', serif;
+  --font-ui:        'Jost', 'Trebuchet MS', 'Segoe UI', sans-serif;
+  --font-arabic:    'Amiri', 'Scheherazade New', 'Traditional Arabic', serif;
+  --font-arabic-disp: 'Aref Ruqaa', 'Amiri', serif;
+
+  /* ── flow of type sizes ───────────────────────────────────── */
+  --fs-hero-names:  clamp(3.4rem, 9vw, 6.2rem);
+  --fs-display:     clamp(2.1rem, 5.2vw, 3.3rem);
+  --fs-title:       clamp(1.55rem, 3.6vw, 2.35rem);
+  --fs-subtitle:    clamp(1.02rem, 2.2vw, 1.28rem);
+  --fs-body:        clamp(.98rem, 1.7vw, 1.13rem);
+  --fs-label:       clamp(.66rem, 1.25vw, .78rem);
+  --fs-numerals:    clamp(2rem, 5vw, 3.1rem);
+
+  /* ── measures & rhythm ────────────────────────────────────── */
+  --measure:        34rem;
+  --scene-pad-y:    clamp(4.4rem, 10vh, 7.2rem);
+  --scene-pad-x:    clamp(1.4rem, 5vw, 3.2rem);
+  --card-radius:    6px;
+  --speed:          .42s;
+  --ease:           cubic-bezier(.18, .8, .26, 1);
+
+  color-scheme: light;
+}
