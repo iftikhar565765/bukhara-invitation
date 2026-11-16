@@ -1,37 +1,55 @@
 #!/bin/bash
-# BUKHARA — Samarkand turquoise & saffron silk-road suite: premium art
-# on pure white for the flood-fill cutout pipeline. Textures full-bleed.
+# BUKHARA — turquoise & gold caravan-serai suite, regeneration Ⅱ.
+# Hardened prompts: flat painted matte illustration, no photorealism,
+# no 3D bevel. Raw on pure white for the flood-fill cutout pipeline.
 set -u
 RAW=/home/z/my-project/bukhara-invitation/_raw-art
 mkdir -p "$RAW"
 
 gen () {
   local name="$1" size="$2" prompt="$3"
-  for attempt in 1 2 3 4 5 6 7 8; do
+  for attempt in 1 2 3 4 5 6 7 8 9 10; do
     [ -s "$RAW/$name.png" ] && { echo "have $name"; return 0; }
     echo "== bukhara/$name attempt $attempt"
-    if timeout 150 z-ai image -p "$prompt" -o "$RAW/$name.png" -s "$size" 2>&1 | grep -q 'File saved to'; then
-      echo "ok bukhara/$name"; sleep 12; return 0
+    if timeout 150 z-ai image -p "$prompt" -o "$RAW/$name.png" -s "$size" 2>&1 | grep -q 'completed'; then
+      echo "ok bukhara/$name"; sleep 8; return 0
     fi
-    sleep $((35 + attempt * 12))
+    rm -f "$RAW/$name.png"
+    sleep $((20 + attempt * 8))
   done
   echo "FAILED bukhara/$name"
 }
 
-TILE="fine Persian glazed tile ornament, Samarkand Timurid manuscript illumination style, turquoise and cobalt blue glaze with muted saffron gold accents, delicate hairline scrolls, matte finish, no gloss, no 3D bevel, flat elegant luxury composition, crisp clean silhouette edges, no halo, no glow bleeding outside the object, isolated on pure white background, high detail, no text, no letters, no calligraphy"
+STYLE="flat painted illustration in the manner of a Timurid illuminated manuscript, luxury wedding stationery artwork, glazed turquoise and deep cobalt lapis blue with muted matte antique gold, absolutely no photorealism, no photograph, no 3D rendering, no glossy metallic bevel, no ceramic plate, uniform matte finish, crisp clean silhouette, isolated on pure white background, high detail, no text, no letters, no watermark"
 
-# ---------- hero & scene art ----------
-gen arch-bukhara 1024x1024 "a flat ornamental Persian pishtaq pointed arch FRAME only, perfectly centred filling the frame, the arch band of turquoise glazed tiles with fine cobalt arabesque inlay and delicate saffron gold edging, small gold finial at the crown apex, thin slim band, the area inside the arch completely plain flat pure white empty, the area outside the arch completely plain flat pure white empty, no walls, no depth, no niche, no shading inside, $TILE"
-gen seal-bukhara 1024x1024 "a round turquoise glazed medallion seal, a fine eight-pointed girih star in saffron gold at the centre, encircled by a delicate cobalt and gold tile border, matte ceramic glaze finish, $TILE"
-gen corner-bukhara 1024x1024 "a top-left corner ornament of slender Persian eslimi arabesque vine in cobalt blue with tiny turquoise blossoms and fine saffron gold scrollwork curving gently inward, $TILE"
-gen lantern-bukhara 1024x1024 "one hanging Persian gold lantern with softly translucent turquoise glass panels, slender ornate gold chains rising to a small ring at the top, matte antique gold frame with cobalt blue caps, unlit panels with no bloom, $TILE"
-gen shamsa-bukhara 1024x1024 "a round Islamic girih star mosaic roundel, fine turquoise and cobalt glazed tiles radiating from a small saffron gold centre, perfectly symmetrical and delicate, $TILE"
-gen divider-bukhara 1024x1024 "a slim horizontal ornament rule, a fine double hairline in saffron gold with a small Persian palmette motif and two symmetric cobalt arabesque scrolls at the centre, perfectly centred and delicate, $TILE"
-gen crescent-bukhara 1024x1024 "a slender elongated saffron gold crescent moon with one tiny five-pointed turquoise star nestled in its curve, fine filigree surface texture, $TILE"
-gen roses-bukhara 1024x1024 "a lush cluster of Persian tulips and cream roses with cobalt blue leaves and tiny turquoise buds, soft painterly matte illustration, muted silk-road jewel tones, crisp clean edges, isolated on pure white background, high detail, no text"
-gen swag-bukhara 1024x1024 "an elegant hanging garland swag of small turquoise and cream tulips with fine gold leaves and thin saffron ribbon tied at both ends, soft painterly matte illustration, muted silk-road tones, crisp clean edges, isolated on pure white background, high detail, no text"
-gen dome-bukhara 1152x864 "a majestic turquoise ribbed Persian dome with a slender gold crescent finial, flanked by two elegant slim minarets with turquoise tile bands, cobalt blue stone bands and saffron gold ornament, dawn grandeur over the Registan, $TILE"
+# 1 — hero arch: pointed iwan arch with glazed tile band, dawn glow inside
+gen arch-bukhara-tall 1152x864 "one single grand pointed iwan arch frame perfectly centred filling most of the frame, the arch band decorated with fine glazed tile mosaic in turquoise and cobalt lapis with delicate matte gold arabesque scrollwork, slim side colonnettes with small tile panels, a small gold crescent finial at the crown apex, the inside of the arch filled with a soft warm dawn glow gradient pale gold fading gently upward, everything outside the arch pure white empty, $STYLE"
 
-# ---------- full-bleed textures ----------
-gen tiles-bukhara 1440x720 "seamless Samarkand turquoise glazed tile mosaic surface, fine girih star lattice in cobalt blue and turquoise glaze with thin saffron gold grout lines, matte ceramic finish, soft diffused museum light, minimal, no objects, no text, no border, flat even lighting, high detail"
+# 2 — fanous lantern
+gen lantern-bukhara 768x1344 "one slender hanging Central Asian fanous lantern, matte antique gold frame with fine pierced openwork, soft turquoise tinted glass panels, small ornate chain rising to a ring at the top, small glazed turquoise cap at base and crown, $STYLE"
+
+# 3 — shamsa medallion
+gen shamsa-bukhara 1024x1024 "one round Islamic eight-pointed khatim star medallion of fine turquoise and cobalt glazed rosette line art interlacing into a delicate girih lattice with matte gold outlines, tiny gold details at the star points, perfectly symmetric, centred, generous white margin around it, $STYLE"
+
+# 4 — corner ornament (true corner, anchored top-left)
+gen corner-bukhara 1024x1024 "one top-left corner ornament of slender matte antique gold arabesque scrollwork hugging the top-left corner of the canvas with tiny turquoise glazed blossoms and fine blue leaves curving gently inward toward the centre, thin delicate lines, generous white space on the right and bottom, $STYLE"
+
+# 5 — divider: ultra-thin horizontal rule
+gen divider-bukhara 1344x768 "an extremely thin horizontal gold divider rule running across the full width at the vertical centre of the canvas, a single fine hairline double rule with one tiny turquoise-glazed eight-pointed star at the exact centre and two small symmetric arabesque scrolls curling outward at the ends, the ornament occupies only the middle eight percent of the canvas height, everything above and below the rule pure white empty, $STYLE"
+
+# 6 — crescent
+gen crescent-bukhara 1024x1024 "one slender elongated matte antique gold crescent moon elegantly curved with one tiny five-pointed gold star nestled in its upper curve, fine turquoise enamel filigree texture on the crescent surface, centred with generous white margin, $STYLE"
+
+# 7 — roses (tight cluster, no white pockets)
+gen roses-bukhara 1024x1024 "one tight lush cluster of soft ivory and blush roses with deep teal-green glazed leaves and tiny turquoise buds, flowers overlapping densely with no gaps between them, soft painterly matte illustration, muted jewel tones, crisp clean edges, isolated on pure white background, high detail, no text"
+
+# 8 — wax seal
+gen seal-bukhara 1024x1024 "one round deep cobalt lapis blue wax seal stamped with an embossed matte antique gold eight-pointed star and slender crescent at its centre, fine beaded pressed edge, slightly imperfect hand-poured wax rim, matte finish, centred, generous white margin, $STYLE"
+
+# 9 — swag garland (wide)
+gen swag-bukhara 1344x768 "one elegant hanging garland swag curving in a gentle arc across the canvas, made of small turquoise blossoms and cream roses with fine matte gold leaves and thin gold ribbon tied at both upper corners, soft painterly matte illustration, muted jewel tones, crisp clean edges, isolated on pure white background, high detail, no text"
+
+# 10 — dome (closing plate)
+gen dome-bukhara 1152x864 "one majestic glazed turquoise Samarkand mosque dome with a slender gold crescent finial at its crown, ribbed turquoise tiles with matte gold ornament bands, flanked by two elegant slim minarets with warm lit arched windows, twilight grandeur, painted matte illustration, no photorealism, no photograph, crisp clean edges, isolated on pure white background, high detail, no text"
+
 echo BUKHARA-DONE

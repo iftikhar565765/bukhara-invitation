@@ -13,11 +13,11 @@
   color-scheme: dark;
 
   /* surfaces — warm ink, flat */
-  --desk: #11150e;
-  --desk-soft: #14180f;
-  --panel: #171c12;
-  --panel-soft: #1e2416;
-  --panel-deep: #12160d;
+  --desk: #0c1416;
+  --desk-soft: #0e1719;
+  --panel: #111b1e;
+  --panel-soft: #162326;
+  --panel-deep: #0a1113;
   --well: rgba(0, 0, 0, .3);
 
   /* lines & type colours */
@@ -32,7 +32,7 @@
   --accent: #dfc084;
   --accent-strong: #f2dca8;
   --accent-ink: #151206;
-  --sage: #a4b494;
+  --sage: #8fb0b4;
   --rose-soft: #d8a5a5;
 
   /* shape & depth */
