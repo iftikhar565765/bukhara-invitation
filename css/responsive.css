@@ -19,18 +19,19 @@
   .event__note { max-width: 100%; }
 
   .arch-card { width: min(100%, 420px); }
-  .arch-card__inner { left: 22.5%; right: 22.5%; top: 19%; bottom: 7%; padding: 4.5% 6%; }
+  /* the letter keeps its place in the iwan — same window-relative
+     geometry, slightly roomier padding at the small scale */
+  .arch-card__inner { left: 25.7%; right: 27.7%; top: 36.5%; bottom: 15%; padding: 3cqw 4.5cqw; }
 }
 
 @media (max-width: 560px) {
-  .arch-card__name { font-size: clamp(2rem, 8vw, 2.5rem); }
   /* the narrow card drops its hairline rules and tightens the names */
   .arch-card__rule { display: none; }
-  .arch-card__name { font-size: clamp(1.85rem, 8vw, 2.4rem); }
   .arch-card__bismillah { font-size: .92rem; }
   .arch-card__invite { letter-spacing: .13em; }
-  .arch-card__nikah { letter-spacing: .12em; }
-  .arch-card__venue-address { font-size: .56rem; max-width: 32ch; }
+  /* the full address lives in the venue chapter and the particulars —
+     the letter carries the venue name alone */
+  .arch-card__venue-address { display: none; }
   .moon-card__name { font-size: clamp(2rem, 8vw, 2.5rem); }
   .opening__florals { width: clamp(8rem, 30vw, 12rem); }
   .opening__lantern--l { left: .2rem; }
