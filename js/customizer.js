@@ -109,8 +109,6 @@
     'palette-swatches': 'Palette swatches',
     'day-words': 'Wedding-day words',
     'venue-arch': 'Venue arch',
-    'venue-lantern-l': 'Venue lantern (left)',
-    'venue-lantern-r': 'Venue lantern (right)',
     'countdown-shamsa': 'Countdown medallion',
     'countdown-clock': 'Countdown clock',
     'rsvp-watermark': 'RSVP watermark',

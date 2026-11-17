@@ -138,6 +138,7 @@ body {
 
 /* a slow light sweep across the dark-band display titles */
 .scene--countdown .count-script em,
+.scene--itinerary .display .script,
 .scene--ayat .ayat-title {
   background: linear-gradient(100deg,
     var(--gold-bright) 30%,

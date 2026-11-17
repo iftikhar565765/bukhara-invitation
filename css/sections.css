@@ -145,15 +145,15 @@
   position: absolute;
   left: 25.5%;
   right: 25.5%;
-  top: 20%;
-  bottom: 16%;
+  top: 19%;
+  bottom: 11.5%;
   z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 7% 7%;
+  padding: 5% 6.5%;
   background: linear-gradient(180deg,
     var(--paper-raised) 0%,
     var(--ivory) 52%,
@@ -165,12 +165,12 @@
     0 22px 52px -22px color-mix(in srgb, #06181F 66%, transparent);
 }
 .arch-card__inner > * { max-width: 100%; }
-.arch-card__inner > * + * { margin-top: clamp(.4rem, 1.5vh, .85rem); }
+.arch-card__inner > * + * { margin-top: clamp(.22rem, .8vh, .52rem); }
 
 .arch-card__bismillah {
   font-family: var(--font-arabic);
   font-size: clamp(1rem, 3vw, 1.25rem);
-  line-height: 1.7;
+  line-height: 1.55;
   color: var(--burgundy);
   margin-bottom: 0;
 }
@@ -233,6 +233,9 @@
 }
 .arch-card__rule i:last-child { transform: scaleX(-1); }
 .arch-card__rule img { width: clamp(1.5rem, 5%, 2rem); height: auto; opacity: .9; }
+/* the closing rule yields its place to the venue lines — the label
+   under the venue name already carries its own dash ornament */
+.arch-card__rule--end { display: none; }
 
 .arch-card__date { margin-top: 0; }
 .arch-card__date-week {
@@ -264,7 +267,7 @@
   color: var(--ink-soft);
   letter-spacing: .16em;
   font-size: clamp(.5rem, 1.5vw, .62rem);
-  line-height: 1.9;
+  line-height: 1.72;
   max-width: 100%;
 }
 .arch-card__nikah-sep { color: var(--gold-line); }
@@ -677,6 +680,7 @@
   box-shadow:
     inset 0 0 0 1px color-mix(in srgb, var(--champagne) 62%, transparent),
     inset 0 0 0 5px color-mix(in srgb, var(--champagne) 10%, transparent),
+    0 0 0 6px color-mix(in srgb, var(--champagne) 9%, transparent),
     0 10px 22px -10px color-mix(in srgb, #06181F 55%, transparent);
 }
 .event__numeral {
@@ -770,8 +774,9 @@
 
 .particulars-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: clamp(1.2rem, 4vw, 2.2rem);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: clamp(1.5rem, 4.5vh, 2.4rem) clamp(1.2rem, 4vw, 2.2rem);
+  align-items: start;
   margin-top: clamp(1.4rem, 4vh, 2rem);
 }
 
@@ -858,6 +863,28 @@
   overflow: hidden;
 }
 
+/* the same whisper of girih tilework the other lagoons carry */
+.scene--itinerary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../assets/art/tiles-bukhara.jpg") center / 520px repeat;
+  opacity: .06;
+  pointer-events: none;
+}
+
+/* a fine saffron hairline crowns the band */
+.scene--itinerary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--champagne) 34%, transparent) 18% 82%, transparent);
+  pointer-events: none;
+}
+
 .day-words {
   display: flex;
   flex-wrap: wrap;
@@ -924,17 +951,6 @@
   filter: drop-shadow(0 8px 22px rgba(0, 0, 0, .5));
 }
 
-.venue-lantern {
-  position: absolute;
-  top: -1.4rem;
-  width: clamp(3.2rem, 6.6vw, 4.6rem);
-  z-index: 1;
-  transform-origin: 50% 0;
-  animation: lantern-sway 9s ease-in-out infinite alternate;
-}
-.venue-lantern--l { left: 10%; }
-.venue-lantern--r { right: 10%; animation-delay: -3.6s; }
-
 .venue-description { margin-top: clamp(1.8rem, 4.5vh, 2.4rem); }
 
 .venue-sublines { display: grid; gap: .7rem; }
@@ -977,9 +993,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: min(72%, 520px);
-  opacity: .14;
+  opacity: .17;
   pointer-events: none;
   user-select: none;
+  -webkit-mask-image: radial-gradient(closest-side, #000 62%, rgba(0,0,0,.55) 78%, transparent 96%);
+  mask-image: radial-gradient(closest-side, #000 62%, rgba(0,0,0,.55) 78%, transparent 96%);
 }
 
 .scene--countdown .scene-body { position: relative; z-index: 1; }

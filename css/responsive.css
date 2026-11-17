@@ -19,13 +19,18 @@
   .event__note { max-width: 100%; }
 
   .arch-card { width: min(100%, 420px); }
-  .arch-card__inner { left: 25%; right: 25%; top: 19%; bottom: 15%; padding-inline: 7%; }
+  .arch-card__inner { left: 22.5%; right: 22.5%; top: 19%; bottom: 7%; padding: 4.5% 6%; }
 }
 
 @media (max-width: 560px) {
   .arch-card__name { font-size: clamp(2rem, 8vw, 2.5rem); }
-  .arch-card__bismillah { font-size: .95rem; }
-  .arch-card__venue-address { font-size: .56rem; }
+  /* the narrow card drops its hairline rules and tightens the names */
+  .arch-card__rule { display: none; }
+  .arch-card__name { font-size: clamp(1.85rem, 8vw, 2.4rem); }
+  .arch-card__bismillah { font-size: .92rem; }
+  .arch-card__invite { letter-spacing: .13em; }
+  .arch-card__nikah { letter-spacing: .12em; }
+  .arch-card__venue-address { font-size: .56rem; max-width: 32ch; }
   .moon-card__name { font-size: clamp(2rem, 8vw, 2.5rem); }
   .opening__florals { width: clamp(8rem, 30vw, 12rem); }
   .opening__lantern--l { left: .2rem; }
