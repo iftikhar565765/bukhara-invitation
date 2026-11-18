@@ -45,22 +45,6 @@ body {
     linear-gradient(180deg, var(--night) 0%, var(--night-deep) 100%);
 }
 
-/* letterbox bars — lagoon dark, they part when the seal breaks */
-.letterbox {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: max(11vh, 72px);
-  z-index: 40;
-  background: linear-gradient(180deg, #06181F 0%, color-mix(in srgb, var(--night-deep) 92%, var(--night) 8%) 100%);
-  pointer-events: none;
-  transition: transform 1.5s var(--ease), opacity 1.5s var(--ease);
-}
-.letterbox--top { top: 0; transform-origin: top; box-shadow: 0 1px 0 color-mix(in srgb, var(--champagne) 40%, transparent); }
-.letterbox--bottom { bottom: 0; transform-origin: bottom; box-shadow: 0 -1px 0 color-mix(in srgb, var(--champagne) 40%, transparent); }
-.opening.is-open .letterbox--top { transform: translateY(-102%); }
-.opening.is-open .letterbox--bottom { transform: translateY(102%); }
-
 /* the flap liner is turquoise glaze with a fine gold lattice */
 .envelope__flap-liner {
   background:
@@ -298,6 +282,5 @@ body {
 }
 
 @media (max-width: 720px) {
-  .letterbox { height: max(8vh, 56px); }
   .noor-stage__mote { display: none; }
 }

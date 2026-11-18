@@ -18,17 +18,17 @@
   }
   .event__note { max-width: 100%; }
 
-  .arch-card { width: min(100%, 420px); }
-  /* the letter keeps its place in the iwan — same window-relative
-     geometry, slightly roomier padding at the small scale */
-  .arch-card__inner { left: 25.7%; right: 27.7%; top: 36.5%; bottom: 15%; padding: 3cqw 4.5cqw; }
+  .arch-card { width: min(100%, 470px); }
+  /* the letter keeps its iwan-cut silhouette — only the padding
+     is roomier at the small scale */
+  .arch-card__inner { padding: 6cqw 4.5cqw 5cqw; }
 }
 
 @media (max-width: 560px) {
   /* the narrow card drops its hairline rules and tightens the names */
   .arch-card__rule { display: none; }
   .arch-card__bismillah { font-size: .92rem; }
-  .arch-card__invite { letter-spacing: .13em; }
+  .arch-card__invite { letter-spacing: .09em; max-width: 88%; }
   /* the full address lives in the venue chapter and the particulars —
      the letter carries the venue name alone */
   .arch-card__venue-address { display: none; }
